@@ -30,12 +30,10 @@ app.get('/api', (request, response) => {
     })
 })
 
-app.post('/api', (request, response) => {
-    const body = request.body
-    const split = body.split(',')
+app.post('/api/:val', (request, response) => {
     const reading = new Reading({
-        date: split[0],
-        value: Number(split[1])
+        date: request.params.val,
+        value: Date.now()
     })
 
     reading.save().then(savedReading => {
