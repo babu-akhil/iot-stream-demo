@@ -23,7 +23,7 @@ const Reading = mongoose.model('Reading', readingSchema)
 
 app.use(express.text());
 
-app.get('/', (request, response) => {
+app.get('/api', (request, response) => {
     Reading.find({}).then(readings => {
         response.json(readings)
     })
