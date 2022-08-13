@@ -30,7 +30,7 @@ app.get('/api', (request, response) => {
     })
 })
 
-app.post('/api/:val', (request, response) => {
+app.get('/api/:val', (request, response) => {
     const reading = new Reading({
         date: request.params.val,
         value: Date.now()
