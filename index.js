@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const mongoose = require('mongoose')
@@ -20,7 +21,7 @@ readingSchema.set('toJSON', {
 })
 
 const Reading = mongoose.model('Reading', readingSchema)
-
+app.use(cors())
 app.use(express.text());
 
 app.get('/api', (request, response) => {
