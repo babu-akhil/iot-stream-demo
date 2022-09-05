@@ -9,7 +9,8 @@ mongoose.connect(url)
 
 const readingSchema = new mongoose.Schema({
     date: String,
-    value: Number
+    value: Number,
+    variable: String
 })
 
 readingSchema.set('toJSON', {
@@ -33,6 +34,19 @@ app.get('/api', (request, response) => {
 
 app.get('/api/:val', (request, response) => {
     const reading = new Reading({
+        variable: 'Pressure',
+        date: Date.now(),
+        value: request.params.val
+    })
+
+    reading.save().then(savedReading => {
+        response.json(savedReading)
+    })
+})
+
+app.get('/api/bool/:val', (request, response) => {
+    const reading = new Reading({
+        variable: 'Boolean',
         date: Date.now(),
         value: request.params.val
     })
