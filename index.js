@@ -21,6 +21,7 @@ readingSchema.set('toJSON', {
 })
 
 const Reading = mongoose.model('Reading', readingSchema)
+app.use(express.static('build'))
 app.use(cors())
 app.use(express.text());
 
