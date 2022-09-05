@@ -53,6 +53,8 @@ app.get('/api/bool/:val', (request, response) => {
 
     reading.save().then(savedReading => {
         response.json(savedReading)
+    }).catch(error => {
+        response.send(error)
     })
 })
 
