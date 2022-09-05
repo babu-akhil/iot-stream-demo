@@ -45,6 +45,7 @@ app.get('/api/:val', (request, response) => {
 })
 
 app.get('/api/bool/:val', (request, response) => {
+    if(request.params.val == 1 || request.params.val == 0) {
     const reading = new Reading({
         variable: 'Boolean',
         date: Date.now(),
@@ -55,7 +56,9 @@ app.get('/api/bool/:val', (request, response) => {
         response.json(savedReading)
     }).catch(error => {
         response.send(error)
-    })
+    })} else {
+        response.send('Boolean has to be 1 or 0')
+    }
 })
 
 const PORT = process.env.PORT
