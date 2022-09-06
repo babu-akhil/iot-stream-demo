@@ -87,7 +87,7 @@ app.post('/api', (request, response) => {
         })
         
     }).catch(error => {
-        response.send('Error!')
+        response.send(error)
     })
 
 })
