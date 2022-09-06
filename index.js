@@ -61,6 +61,35 @@ app.get('/api/bool/:val', (request, response) => {
     }
 })
 
+app.post('/api', (request, response) => {
+    let body = request.body;
+    let pressure, boolean = body.split(',');
+
+    let reading = new Reading({
+        variable: 'Pressure',
+        date: Date.now(),
+        value: pressure
+    })
+
+    reading.save().then(savedReading => {
+        let readingBool = new Reading({
+            variable: 'Boolean',
+            date: Date.now(),
+            value: boolean
+        })
+
+        readingBool.save().then(savedBoolReading => {
+            response.send('data stored!')
+        }).catch(error => {
+            response.send('Error with Boolean Data')
+        })
+        
+    }).catch(error => {
+        response.send('Error!')
+    })
+
+})
+
 const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log('Server running!')
