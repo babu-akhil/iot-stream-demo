@@ -63,6 +63,7 @@ app.get('/api/bool/:val', (request, response) => {
 
 app.post('/api', (request, response) => {
     let body = request.body;
+    console.log("body is ", body)
     let [pressure, boolean] = body.split(',');
 
     let reading = new Reading({
