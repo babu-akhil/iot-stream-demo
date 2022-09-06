@@ -63,7 +63,7 @@ app.get('/api/bool/:val', (request, response) => {
 
 app.post('/api', (request, response) => {
     let body = request.body;
-    let pressure, boolean = body.split(',');
+    let [pressure, boolean] = body.split(',');
 
     let reading = new Reading({
         variable: 'Pressure',
@@ -72,6 +72,8 @@ app.post('/api', (request, response) => {
     })
 
     reading.save().then(savedReading => {
+
+
         let readingBool = new Reading({
             variable: 'Boolean',
             date: Date.now(),
