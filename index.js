@@ -32,6 +32,11 @@ app.get('/api', (request, response) => {
     })
 })
 
+app.get('/api/drop', (request, response) => {
+    Reading.collection.drop().then(() => {
+    }).catch(error => {console.log(error)})
+})
+
 app.get('/api/:val', (request, response) => {
     const reading = new Reading({
         variable: 'Pressure',
