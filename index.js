@@ -4,7 +4,9 @@ const cors = require('cors')
 const app = express()
 
 const mongoose = require('mongoose')
-url = encodeURIComponent(process.env.MONGODB_URI);
+username = encodeURIComponent(process.env.username);
+password = encodeURIComponent(process.env.password);
+url = `mongodb+srv://${username}:${password}@cluster0.jxyqqec.mongodb.net/?retryWrites=true&w=majority`
 mongoose.connect(url)
 
 const readingSchema = new mongoose.Schema({
