@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 
 const mongoose = require('mongoose')
-url = process.env.MONGODB_URI
+url = encodeURIComponent(process.env.MONGODB_URI);
 mongoose.connect(url)
 
 const readingSchema = new mongoose.Schema({
